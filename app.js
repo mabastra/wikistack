@@ -9,6 +9,8 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: false }));
+app.use('/wiki', require('./routes/wiki'));
+app.use('/users', require('./routes/users'));
 
 db.authenticate()
   .then(() => {
@@ -16,7 +18,7 @@ db.authenticate()
   })
 
 app.get('/', (req, res, next) => {
-    res.send(layout(''));
+    res.redirect('/wiki');
     next();
 });
 
