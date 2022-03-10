@@ -26,7 +26,7 @@ const PORT = 1221;
 
 async function initialize () {
   await db.sync();
-  // await db.sync({force: true});
+//   await db.sync({force: true});
 
   app.listen(PORT, () => {
     console.log(`App listening in port ${PORT}`);
